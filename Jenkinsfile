@@ -12,7 +12,7 @@ pipeline {
         stage('Plan') {
             steps {
                 sh'''
-                    echo "Terraform Plan.."
+                    echo "Terraform Plan..."
                     terraform plan
                 '''
             }
