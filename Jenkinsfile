@@ -1,21 +1,29 @@
 pipeline {
-    agent any
+    agent { node { label 'dev' } }
 
     stages {
-        stage('Build') {
+        stage('Init') {
             steps {
-                echo 'Building..'
+                sh'''
+                    echo "Terraform Init.."
+                    terraform init
+                '''
             }
         }
-        stage('Deploy') {
+        stage('Plan') {
             steps {
-                echo 'Deploying..'
+                sh'''
+                    echo "Terraform Plan.."
+                    terraform plan
+                '''
             }
         }
-        stage('Test') {
+        stage('Apply') {
             steps {
-                echo 'Testing..'
-                sh 'pwd'
+                sh'''
+                    echo "Terraform Apply.."
+                    terraform apply -auto-approve
+                '''
             }
         }
     }
