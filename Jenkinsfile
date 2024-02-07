@@ -20,7 +20,7 @@ pipeline {
         stage('Apply') {
             steps {
                 sh'''
-                    echo "Terraform Apply.."
+                    echo "Terraform Apply..."
                     terraform apply -auto-approve
                 '''
             }
