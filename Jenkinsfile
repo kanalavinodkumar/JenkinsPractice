@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'dev' } }
+    agent { node { label 'agent' } }
     stages {
         stage('Init') {
             steps {
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Apply') {
             steps {
-                
+
                 sh'''
                     echo "Terraform Apply.."
                     terraform apply -auto-approve
